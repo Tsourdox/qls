@@ -36,9 +36,9 @@ function waitForPort(port, host = "127.0.0.1", timeout = 30_000) {
 const program = new Command();
 
 program
-  .name("qsl")
+  .name("qls")
   .description(
-    "QR Server Link - Generate a QR code for accessing your local dev server from another device on your LAN."
+    "QR Link Server - Generate a QR code to open your local dev server on another device on your LAN."
   )
   .argument("<port>", "Local dev server port to wait for and expose")
   .action(async (portArg) => {
@@ -52,9 +52,8 @@ program
     await waitForPort(port);
     const url = `http://${ip}:${port}`;
 
-    console.log("Scan this QR with your phone:");
+    console.log("\n", url);
     qrcode.generate(url, { small: true });
-    console.log(url);
   });
 
 program.parseAsync(process.argv);

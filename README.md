@@ -1,20 +1,51 @@
-# qsl
+# qls — QR Link Server
 
-Generate a QR code to open your local dev server from another device on your LAN.
+Generate a QR code that opens your local dev server from another device on your LAN.
+
+![qls screenshot](./image.jpg)
+
+## Install
+
+- Global (preferred for quick usage):
+
+  - `npm i -g qls`
+  - Then run: `qls 3000`
+
+- No install (one‑off use):
+
+  - `npx qls 3000`
+
+- Local dev (from this repo):
+  - `npm link` then `qls 3000`
+  - Or `npx -y . 3000`
 
 ## Usage
 
-Run directly with npx (no install required):
+```
+qls <port>
 
-```bash
-npx qsl 3000
+Examples:
+  qls 3000
+  qls 5173
 ```
 
-Or link locally while developing:
+qls waits until the given port is reachable on localhost, rewrites the host to your LAN IP, prints a QR in the terminal, and echoes the URL.
 
-```bash
-npm link
-qsl 3000
-```
+## Why
 
-qsl waits until the given port is reachable on localhost, rewrites it to your LAN IP, prints a QR, and echoes the URL.
+- Open your local dev server on a phone/tablet without typing IPs
+- Great for testing responsive layouts, PWAs, and camera features
+
+## Notes
+
+- Requires Node.js (LTS recommended). Works on macOS, Linux, and Windows.
+- The QR encodes `http://<your-lan-ip>:<port>`; ensure your device is on the same Wi‑Fi/LAN and your firewall allows access.
+
+## Troubleshooting
+
+- Can’t find LAN IP: some environments (e.g., containers) may restrict network interfaces. Run on your host OS or expose interfaces.
+- Port never becomes ready: ensure your dev server is running on the given port and listening on localhost.
+
+## Alternatives / Name ideas
+
+Other nice names we considered (wanted something short and memorable): `qres`, `lan-qr`, `dev-qr`, `qr-dev-link`, `qrserve`, `qr-open`, `port2qr`
