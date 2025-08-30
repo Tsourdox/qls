@@ -16,7 +16,7 @@ function getLanIp() {
   return "127.0.0.1";
 }
 
-function waitForPort(port, host = "127.0.0.1", timeout = 30_000) {
+function waitForPort(port, host = "127.0.0.1", timeout = 10_000) {
   return new Promise((resolve) => {
     const end = Date.now() + timeout;
     (function check() {
@@ -49,9 +49,27 @@ program
       process.exit(1);
     }
 
-    await waitForPort(port);
-    const url = `http://${ip}:${port}`;
+    // Spinner while we wait for the port to become available
+    const frames = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]; // Braille spinner
+    let idx = 0;
+    const spin = setInterval(() => {
+      const frame = frames[(idx = (idx + 1) % frames.length)];
+      process.stdout.write(
+        `\r${frame} Waiting for port ${port} on localhost...`
+      );
+    }, 80);
 
+    const ready = await waitForPort(port);
+    clearInterval(spin);
+    process.stdout.write("\r\x1b[2K"); // clear line
+    if (!ready) {
+      console.error(
+        `Timed out waiting for port ${port}. Is your server running?`
+      );
+      process.exit(1);
+    }
+
+    const url = `http://${ip}:${port}`;
     console.log("\n", url);
     qrcode.generate(url, { small: true });
   });
