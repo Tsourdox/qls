@@ -1,15 +1,20 @@
-# qr-server-link
+# qsl
 
-To install dependencies:
+Generate a QR code to open your local dev server from another device on your LAN.
 
-```bash
-bun install
-```
+## Usage
 
-To run:
+Run directly with npx (no install required):
 
 ```bash
-bun run 
+npx qsl 3000
 ```
 
-This project was created using `bun init` in bun v1.2.15. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Or link locally while developing:
+
+```bash
+npm link
+qsl 3000
+```
+
+qsl waits until the given port is reachable on localhost, rewrites it to your LAN IP, prints a QR, and echoes the URL.

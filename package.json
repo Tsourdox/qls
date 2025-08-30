@@ -1,14 +1,23 @@
 {
-  "name": "qr-server-link",
-  "private": true,
-  "devDependencies": {
-    "@types/bun": "latest",
-    "@types/qrcode-terminal": "^0.12.2"
+  "name": "qsl",
+  "version": "0.1.0",
+  "description": "Generate a QR code to open your local dev server from another device on your LAN.",
+  "bin": {
+    "qsl": "qsl.js"
   },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
+  "keywords": [
+    "qr",
+    "qrcode",
+    "lan",
+    "dev",
+    "cli"
+  ],
   "dependencies": {
+    "commander": "^14.0.0",
     "qrcode-terminal": "^0.12.0"
-  }
+  },
+  "files": [
+    "qsl.js",
+    "README.md"
+  ]
 }
