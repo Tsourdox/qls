@@ -26,7 +26,7 @@ qls <port>
 Example: qls 3000
 ```
 
-![qls screenshot](https://raw.githubusercontent.com/Tsourdox/qls/refs/heads/main/image.jpg?token=GHSAT0AAAAAADIJIXE3YYNS4XHBXAJDU3M62FTOLLA)
+![qls screenshot](https://github.com/Tsourdox/qls/blob/main/image.jpg?raw=true)
 
 qls waits until the given port is reachable on localhost, rewrites the host to your LAN IP, prints a QR in the terminal, and echoes the URL.
 
