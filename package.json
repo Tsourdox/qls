@@ -39,7 +39,6 @@
   "files": [
     "cli.js",
     "README.md",
-    "image.jpg",
     "LICENSE"
   ],
   "engines": {
