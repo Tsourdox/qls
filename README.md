@@ -1,5 +1,7 @@
 # qls — QR Link Server
 
+![Maintained](https://img.shields.io/badge/maintained-yes-blue)
+
 Generate a QR code that opens your local dev server from another device on your LAN.
 
 ## Install
@@ -24,7 +26,7 @@ qls <port>
 Example: qls 3000
 ```
 
-![qls screenshot](./image.jpg)
+![qls screenshot](https://raw.githubusercontent.com/Tsourdox/qls/refs/heads/main/image.jpg?token=GHSAT0AAAAAADIJIXE3YYNS4XHBXAJDU3M62FTOLLA)
 
 qls waits until the given port is reachable on localhost, rewrites the host to your LAN IP, prints a QR in the terminal, and echoes the URL.
 
