@@ -1,6 +1,6 @@
 {
   "name": "qls",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "QR Link Server: generate a QR to open your local dev server from another device on your LAN.",
   "bin": {
     "qls": "cli.js"
